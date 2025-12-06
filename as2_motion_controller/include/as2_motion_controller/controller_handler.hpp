@@ -37,10 +37,10 @@
 #define AS2_MOTION_CONTROLLER__CONTROLLER_HANDLER_HPP_
 
 #include <rcl/time.h>
-#include <tf2/time.h>
-#include <message_filters/subscriber.h>
-#include <message_filters/sync_policies/approximate_time.h>
-#include <message_filters/time_synchronizer.h>
+#include <tf2/time.hpp>
+#include <message_filters/subscriber.hpp>
+#include <message_filters/sync_policies/approximate_time.hpp>
+#include <message_filters/time_synchronizer.hpp>
 #include <memory>
 #include <algorithm>
 #include <chrono>

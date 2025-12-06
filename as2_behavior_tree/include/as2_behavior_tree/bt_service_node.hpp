@@ -65,7 +65,7 @@ public:
     // service
     getInput("service_name", service_name_);
     service_client_ = node_->create_client<ServiceT>(
-      service_name_, rmw_qos_profile_services_default, callback_group_);
+      service_name_, rclcpp::ServicesQoS(), callback_group_);
 
     // Make a request for the service without parameter
     request_ = std::make_shared<typename ServiceT::Request>();

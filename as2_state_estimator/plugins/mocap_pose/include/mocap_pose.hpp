@@ -41,8 +41,8 @@
 #ifndef MOCAP_POSE_HPP_
 #define MOCAP_POSE_HPP_
 
-#include <tf2/LinearMath/Quaternion.h>
-#include <tf2/LinearMath/Vector3.h>
+#include <tf2/LinearMath/Quaternion.hpp>
+#include <tf2/LinearMath/Vector3.hpp>
 #include <string>
 #include <vector>
 #include <mocap4r2_msgs/msg/rigid_bodies.hpp>

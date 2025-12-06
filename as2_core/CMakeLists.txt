@@ -27,6 +27,10 @@ elseif(ROS_DISTRO STREQUAL "humble")
   option(ROS_HUMBLE "ROS Humble" ON)
 elseif(ROS_DISTRO STREQUAL "jazzy")
   option(ROS_JAZZY "ROS Jazzy" ON)
+elseif(ROS_DISTRO STREQUAL "kilted")
+  option(ROS_KILTED "ROS Kilted" ON)
+elseif(ROS_DISTRO STREQUAL "rolling")
+  option(ROS_ROLLING "ROS Rolling" ON)
 endif()
 configure_file(
   "${PROJECT_SOURCE_DIR}/include/as2_core/custom/tf2_geometry_msgs.hpp.in"

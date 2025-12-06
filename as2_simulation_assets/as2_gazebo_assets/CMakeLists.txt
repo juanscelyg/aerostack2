@@ -7,16 +7,9 @@ if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 17)
 endif()
 
-# IGNITION FORTRESS --> ROS2 GALACTIC
-# find_package(gz-gazebo6 REQUIRED)
-# set(IGN_GAZEBO_VER ${gz-gazebo6_VERSION_MAJOR})
-
-#by default use the fortress version of ignition
-set(GZ_VERSION "fortress")
-
 # check if harmonic libs are available
-find_package(gz-common5 QUIET)
-if(gz-common5_FOUND)
+find_package(gz-common QUIET)
+if(gz-common_FOUND)
   set(GZ_VERSION "harmonic")
 endif()
 
@@ -24,13 +17,13 @@ message("Using GAZEBO version: ${GZ_VERSION}")
 
 if( ${GZ_VERSION} STREQUAL "harmonic" )
 
-set(GZ_SIM "gz-sim8")
-set(GZ_COMMON "gz-common5")
-set(GZ_MATH "gz-math7")
-set(GZ_TRANSPORT "gz-transport13")
-set(GZ_PLUGIN "gz-plugin2")
-set(GZ_RENDERING "gz-rendering8")
-set(GZ_MSGS "gz-msgs10")
+set(GZ_SIM "gz-sim")
+set(GZ_COMMON "gz-common")
+set(GZ_MATH "gz-math")
+set(GZ_TRANSPORT "gz-transport")
+set(GZ_PLUGIN "gz-plugin")
+set(GZ_RENDERING "gz-rendering")
+set(GZ_MSGS "gz-msgs")
 
 elseif( ${GZ_VERSION} STREQUAL "fortress" )
 

@@ -38,8 +38,8 @@
 #define AS2_CORE__UTILS__TF_UTILS_HPP_
 
 
-#include <tf2/convert.h>
-#include <tf2/time.h>
+#include <tf2/convert.hpp>
+#include <tf2/time.hpp>
 #include <tf2_ros/create_timer_ros.h>
 
 #include <string>

@@ -35,7 +35,7 @@
 #ifndef UTILS_HPP_
 #define UTILS_HPP_
 
-#include <tf2/convert.h>
+#include <tf2/convert.hpp>
 #include <tf2_ros/buffer.h>
 #include <tf2_ros/transform_listener.h>
 
