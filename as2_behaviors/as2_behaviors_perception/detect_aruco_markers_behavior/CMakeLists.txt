@@ -21,7 +21,7 @@ set(SOURCE_CPP_FILES
 )
 
 add_executable(${EXECUTABLE_NAME}_node ${SOURCE_CPP_FILES})
-target_link_libraries(${EXECUTABLE_NAME}_node ${OPENCV_LIBS})
+target_link_libraries(${EXECUTABLE_NAME}_node ${OPENCV_LIBS} Eigen3::Eigen)
 ament_target_dependencies(${EXECUTABLE_NAME}_node ${PROJECT_DEPENDENCIES} ${EXECUTABLE_DEPENDENCIES})
 
 install(DIRECTORY

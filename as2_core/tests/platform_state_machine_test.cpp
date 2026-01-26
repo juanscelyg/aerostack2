@@ -35,7 +35,7 @@
  *              Rafael Pérez Seguí
  ********************************************************************************/
 
-#include "platform_state_machine.hpp"
+#include "as2_core/platform_state_machine.hpp"
 
 #include <iostream>
 

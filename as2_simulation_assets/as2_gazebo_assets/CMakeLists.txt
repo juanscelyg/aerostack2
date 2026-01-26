@@ -64,6 +64,7 @@ set(PROJECT_DEPENDENCIES
   tf2_msgs
   tf2_ros
   ros_gz_interfaces
+  Eigen3
 )
 
 foreach(DEPENDENCY ${PROJECT_DEPENDENCIES})
@@ -89,6 +90,7 @@ ament_target_dependencies(gps_bridge
   ${GZ_MSGS}
   ${GZ_TRANSPORT}
 )
+target_link_libraries(gps_bridge Eigen3::Eigen)
 
 add_executable(ground_truth_bridge src/ground_truth_bridge/ground_truth_bridge.cpp src/ground_truth_bridge/ground_truth_bridge_node.cpp)
 ament_target_dependencies(ground_truth_bridge
@@ -99,6 +101,7 @@ ament_target_dependencies(ground_truth_bridge
   ${GZ_MSGS}
   ${GZ_TRANSPORT}
 )
+target_link_libraries(ground_truth_bridge Eigen3::Eigen)
 
 add_executable(azimuth_bridge src/azimuth_bridge/azimuth_bridge.cpp src/azimuth_bridge/azimuth_bridge_node.cpp)
 ament_target_dependencies(azimuth_bridge
@@ -112,6 +115,7 @@ ament_target_dependencies(azimuth_bridge
   ${GZ_MSGS}
   ${GZ_TRANSPORT}
 )
+target_link_libraries(azimuth_bridge Eigen3::Eigen)
 
 add_executable(object_tf_broadcaster src/object_tf_broadcaster/object_tf_broadcaster.cpp
                                       src/object_tf_broadcaster/object_tf_broadcaster_node.cpp)
@@ -136,6 +140,7 @@ ament_target_dependencies(gimbal_bridge
   ${GZ_MSGS}
   ${GZ_TRANSPORT}
 )
+target_link_libraries(gimbal_bridge Eigen3::Eigen)
 
 add_executable(acro_bridge src/acro_bridge/acro_bridge.cpp src/acro_bridge/acro_bridge_node.cpp)
 ament_target_dependencies(acro_bridge
@@ -148,6 +153,7 @@ ament_target_dependencies(acro_bridge
   ${GZ_MSGS}
   ${GZ_TRANSPORT}
 )
+target_link_libraries(acro_bridge Eigen3::Eigen)
 
 add_executable(set_entity_pose_bridge src/set_entity_pose_bridge/set_entity_pose_bridge.cpp
 src/set_entity_pose_bridge/set_entity_pose_bridge_node.cpp)

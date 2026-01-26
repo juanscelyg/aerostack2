@@ -30,7 +30,7 @@
 // #include <stdexcept>
 
 #include "gtest/gtest.h"
-#include "utils/tf_utils.hpp"
+#include "as2_core/utils/tf_utils.hpp"
 
 TEST(TF2NamespacesTest, empty_empty) {
   EXPECT_THROW(as2::tf::generateTfName("", ""), std::runtime_error);

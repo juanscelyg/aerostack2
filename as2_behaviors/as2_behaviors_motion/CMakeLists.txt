@@ -55,6 +55,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
   $<INSTALL_INTERFACE:include>)
 
 ament_target_dependencies(${PROJECT_NAME} ${PROJECT_DEPENDENCIES})
+target_link_libraries(${PROJECT_NAME} Eigen3::Eigen)
 pluginlib_export_plugin_description_file(${PROJECT_NAME} plugins.xml)
 
 install(
@@ -93,6 +94,7 @@ foreach(EXECUTABLE ${SUBPACKAGES})
     $<INSTALL_INTERFACE:include>)
 
   ament_target_dependencies(${EXECUTABLE}_node ${PROJECT_DEPENDENCIES})
+  target_link_libraries(${EXECUTABLE}_node Eigen3::Eigen)
 
   install(TARGETS ${EXECUTABLE}_node
     DESTINATION lib/${PROJECT_NAME})
@@ -117,30 +119,35 @@ add_library(takeoff_component SHARED
   takeoff_behavior/src/takeoff_behavior.cpp
 )
 ament_target_dependencies(takeoff_component ${PROJECT_DEPENDENCIES})
+target_link_libraries(takeoff_component Eigen3::Eigen)
 rclcpp_components_register_nodes(takeoff_component "TakeoffBehavior")
 
 add_library(land_component SHARED
   land_behavior/src/land_behavior.cpp
 )
 ament_target_dependencies(land_component ${PROJECT_DEPENDENCIES})
+target_link_libraries(land_component Eigen3::Eigen)
 rclcpp_components_register_nodes(land_component "LandBehavior")
 
 add_library(go_to_component SHARED
   go_to_behavior/src/go_to_behavior.cpp
 )
 ament_target_dependencies(go_to_component ${PROJECT_DEPENDENCIES})
+target_link_libraries(go_to_component Eigen3::Eigen)
 rclcpp_components_register_nodes(go_to_component "GoToBehavior")
 
 add_library(follow_path_component SHARED
   follow_path_behavior/src/follow_path_behavior.cpp
 )
 ament_target_dependencies(follow_path_component ${PROJECT_DEPENDENCIES})
+target_link_libraries(follow_path_component Eigen3::Eigen)
 rclcpp_components_register_nodes(follow_path_component "FollowPathBehavior")
 
 add_library(follow_reference_component SHARED
   follow_reference_behavior/src/follow_reference_behavior.cpp
 )
 ament_target_dependencies(follow_reference_component ${PROJECT_DEPENDENCIES})
+target_link_libraries(follow_reference_component Eigen3::Eigen)
 rclcpp_components_register_nodes(follow_reference_component "FollowReferenceBehavior")
 
 install(TARGETS

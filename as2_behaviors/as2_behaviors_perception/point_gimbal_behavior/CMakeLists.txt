@@ -22,10 +22,12 @@ set(SOURCE_CPP_FILES
 
 add_executable(${SUBPROJECT_NAME}_node ${SOURCE_CPP_FILES})
 ament_target_dependencies(${SUBPROJECT_NAME}_node ${PROJECT_DEPENDENCIES} ${EXECUTABLE_DEPENDENCIES})
+target_link_libraries(${SUBPROJECT_NAME}_node Eigen3::Eigen)
 
 # Library
 add_library(${SUBPROJECT_NAME} SHARED ${SOURCE_CPP_FILES})
 ament_target_dependencies(${SUBPROJECT_NAME} ${PROJECT_DEPENDENCIES})
+target_link_libraries(${SUBPROJECT_NAME} Eigen3::Eigen)
 
 # Include headers in the library
 target_include_directories(${SUBPROJECT_NAME} PUBLIC

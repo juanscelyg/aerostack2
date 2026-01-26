@@ -22,6 +22,7 @@ set(PROJECT_DEPENDENCIES
   geometry_msgs
   tf2
   tf2_ros
+  Eigen3
 )
 
 foreach(DEPENDENCY ${PROJECT_DEPENDENCIES})
@@ -42,6 +43,7 @@ add_library(${PROJECT_NAME}_plugin_base SHARED ${PLUGIN_BASE_FILES})
 # Specify the language for the target as C++ (as it is a header only library)
 set_target_properties(${PROJECT_NAME}_plugin_base PROPERTIES LINKER_LANGUAGE CXX)
 ament_target_dependencies(${PROJECT_NAME}_plugin_base ${PROJECT_DEPENDENCIES})
+target_link_libraries(${PROJECT_NAME}_plugin_base Eigen3::Eigen)
 
 # Create as2_state_estimator library
 set(SOURCE_CPP_FILES
@@ -50,6 +52,7 @@ set(SOURCE_CPP_FILES
 
 add_library(${PROJECT_NAME} SHARED ${SOURCE_CPP_FILES})
 ament_target_dependencies(${PROJECT_NAME} ${PROJECT_DEPENDENCIES})
+target_link_libraries(${PROJECT_NAME} Eigen3::Eigen)
 
 # Create executable
 set(SOURCE_CPP_FILES

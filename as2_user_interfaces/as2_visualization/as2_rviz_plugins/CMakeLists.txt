@@ -14,7 +14,6 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-
 set(PROJECT_DEPENDENCIES
   ament_cmake
   ament_cmake_ros
@@ -28,9 +27,8 @@ set(PROJECT_DEPENDENCIES
   as2_core
   as2_msgs
   as2_motion_reference_handlers
+  Eigen3
 )
-
-find_package(Qt5 REQUIRED COMPONENTS Widgets)
 
 foreach(DEPENDENCY ${PROJECT_DEPENDENCIES})
   find_package(${DEPENDENCY} REQUIRED)
@@ -38,6 +36,7 @@ endforeach()
 
 ## This setting causes Qt's "MOC" generation to happen automatically.
 set(CMAKE_AUTOMOC ON)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 ## Here we specify the list of source files.
 ## The generated MOC files are included automatically as headers.
@@ -51,9 +50,26 @@ set(SRC_FILES
 ## is called) and specify the list of source files we collected above
 ## in ``${SRC_FILES}``. We also add the needed dependencies.
 add_library(${PROJECT_NAME} SHARED ${SRC_FILES})
-ament_target_dependencies(${PROJECT_NAME} ${PROJECT_DEPENDENCIES})
+
 target_include_directories(${PROJECT_NAME} PUBLIC
-  ${Qt5Widgets_INCLUDE_DIRS})
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  ${Qt5Widgets_INCLUDE_DIRS}
+  ${EIGEN3_INCLUDE_DIRS})
+
+target_link_libraries(${PROJECT_NAME} PUBLIC
+  ${as2_msgs_TARGETS}
+  ${geometry_msgs_TARGETS}
+  ${sensor_msgs_TARGETS}
+  as2_core::as2_core
+  as2_motion_reference_handlers::as2_motion_reference_handlers
+  pluginlib::pluginlib
+  rclcpp::rclcpp
+  rclcpp_action::rclcpp_action
+  rviz_common::rviz_common
+  rviz_rendering::rviz_rendering
+  sensor_msgs::sensor_msgs_library
+  Eigen3::Eigen)
 
 ## Here we export the plugins and meshes so they can be found by RViz at runtime.
 pluginlib_export_plugin_description_file(rviz_common plugin_description.xml)
